@@ -166,10 +166,10 @@ extension ViewController {
         // Find the back camera device input's video port
         guard let cameraDeviceInput = cameraDeviceInput,
             let cameraVideoPort = cameraDeviceInput.ports(for: .video,
-                                                                  sourceDeviceType: camera.deviceType,
-                                                                  sourceDevicePosition: camera.position).first else {
-                                                                    print("Could not find the back camera device input's video port")
-                                                                    return false
+                                                          sourceDeviceType: camera.deviceType,
+                                                          sourceDevicePosition: camera.position).first else {
+                print("Could not find the back camera device input's video port")
+                return false
         }
 
         // Add the back camera video data output

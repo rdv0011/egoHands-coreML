@@ -23,12 +23,12 @@ testImageResized.paste(resized, (0, 0))
 testImageResizedPath = 'tempImage.jpg'
 testImageResized.save(testImageResizedPath)
 
-# Inferring
+# Inferring using CoreML
 predictions = mlmodel.predict({'image': testImageResized})
 annotations = []
 for idx, coordinate in enumerate(predictions['coordinates']):
     confidences = predictions['confidence'][idx]
-    label = 'right' if confidences[0] > confidences[1] else 'left'
+    label = 'right' if confidences[0] < confidences[1] else 'left'
     x = coordinate[0] * inputImageSize[0] * scaleFactor
     y = coordinate[1] * inputImageSize[1]  * scaleFactor
     width = coordinate[2] * inputImageSize[0] * scaleFactor
@@ -43,6 +43,7 @@ annotatedImage.show()
 # Inferring using original Darknet-YOLO model
 handsModel = tc.load_model('Hands')
 tcTestImageResized = tc.Image(testImageResizedPath)
+# tcTestImageResized = tc.Image(testImagePath)
 tcPredictions = handsModel.predict(tcTestImageResized)
 
 # Do scaling to show bounding boxes on an original image
