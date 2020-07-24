@@ -23,8 +23,8 @@ class HandDetector {
     private let confidenceThreshold: VNConfidence = 0.1
     private let detectorQueue = DispatchQueue(label: "detectorQueue")
 
-    func detectHands(on pixelBuffer: CVPixelBuffer, orientation: CGImagePropertyOrientation) {
-        runRequest(on: pixelBuffer, orientation: orientation)
+    func detectHands(on pixelBuffer: CVPixelBuffer) {
+        runRequest(on: pixelBuffer)
     }
 
     private func request() throws -> VNCoreMLRequest {
@@ -49,12 +49,8 @@ class HandDetector {
         }
     }
 
-    private func runRequest(on pixelBuffer: CVPixelBuffer, orientation: CGImagePropertyOrientation) {
-        var requestOptions: [VNImageOption: Any] = [:]
-        if let cameraIntrensicData = CMGetAttachment(pixelBuffer, key: kCMSampleBufferAttachmentKey_CameraIntrinsicMatrix, attachmentModeOut: nil) {
-            requestOptions = [.cameraIntrinsics: cameraIntrensicData]
-        }
-        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: orientation, options: requestOptions)
+    private func runRequest(on pixelBuffer: CVPixelBuffer) {
+        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .right, options: [:])
         detectorQueue.async {
             do {
                 try handler.perform([self.request()])

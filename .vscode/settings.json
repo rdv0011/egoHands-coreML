@@ -1,0 +1,4 @@
+{
+    "python.venv": "~/.virtualenvs",
+    "python.pythonPath": "~/.virtualenvs/ml/bin/python"
+}

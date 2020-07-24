@@ -17,11 +17,8 @@ inputImageSize = Size(width = 416, height = 416)
 testImageOrig = Image.open(testImagePath)
 resized = resizeimage.resize_thumbnail(testImageOrig, inputImageSize, Image.LINEAR)
 scaleFactor = max(testImageOrig.width / inputImageSize.width, testImageOrig.height / inputImageSize.height)
-testImageResized = Image.new('RGB', inputImageSize, (255, 255, 255))
+testImageResized = Image.new('RGB', inputImageSize, (0, 0, 0))
 testImageResized.paste(resized, (0, 0))
-
-testImageResizedPath = 'tempImage.jpg'
-testImageResized.save(testImageResizedPath)
 
 # Inferring using CoreML
 predictions = mlmodel.predict({'image': testImageResized})
@@ -42,18 +39,7 @@ annotatedImage.show()
 
 # Inferring using original Darknet-YOLO model
 handsModel = tc.load_model('Hands')
-tcTestImageResized = tc.Image(testImageResizedPath)
-# tcTestImageResized = tc.Image(testImagePath)
-tcPredictions = handsModel.predict(tcTestImageResized)
-
-# Do scaling to show bounding boxes on an original image
-for idx, prediction in enumerate(tcPredictions):
-    coordinates = prediction['coordinates']
-    coordinates['x'] *= scaleFactor
-    coordinates['y'] *= scaleFactor
-    coordinates['width'] *= scaleFactor
-    coordinates['height'] *= scaleFactor
+tcTestImageOrig = tc.Image(testImagePath)
+tcPredictions = handsModel.predict(tcTestImageOrig)
 annotatedImage = tc.object_detector.util.draw_bounding_boxes(tcTestImageOrig, tcPredictions)
 annotatedImage.show()
-
-remove(testImageResizedPath)
