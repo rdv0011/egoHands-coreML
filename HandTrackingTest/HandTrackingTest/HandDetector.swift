@@ -55,12 +55,7 @@ class HandDetector {
             do {
                 try handler.perform([self.request()])
             } catch {
-                /*
-                 This handler catches general image processing errors. The `classificationRequest`'s
-                 completion handler `processClassifications(_:error:)` catches errors specific
-                 to processing that request.
-                 */
-                print("Failed to perform classification.\n\(error.localizedDescription)")
+                print(HandDetectorError.visionError(error: error))
             }
         }
     }

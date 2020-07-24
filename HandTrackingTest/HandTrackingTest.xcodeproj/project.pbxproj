@@ -15,7 +15,7 @@
 		F1B09D62249E0BA400701392 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B09D60249E0BA400701392 /* LaunchScreen.storyboard */; };
 		F1B09D6A249E0BDD00701392 /* Hands.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F1B09D69249E0BDD00701392 /* Hands.mlmodel */; };
 		F1B09D6C249E0C5300701392 /* HandDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B09D6B249E0C5300701392 /* HandDetector.swift */; };
-		F1C20D6624CAB27C0089A3A7 /* HandTrackingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C20D6524CAB27C0089A3A7 /* HandTrackingError.swift */; };
+		F1C20D6624CAB27C0089A3A7 /* HandDetectorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C20D6524CAB27C0089A3A7 /* HandDetectorError.swift */; };
 		F1C20D6824CAB3780089A3A7 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C20D6724CAB3780089A3A7 /* CameraView.swift */; };
 		F1D6485224C6FE35006B372A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F1D6485124C6FE35006B372A /* README.md */; };
 		F1DDF04924BDE200001D2F4D /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DDF04824BDE200001D2F4D /* CALayer+Extension.swift */; };
@@ -32,7 +32,7 @@
 		F1B09D63249E0BA400701392 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1B09D69249E0BDD00701392 /* Hands.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Hands.mlmodel; path = ../../Hands.mlmodel; sourceTree = "<group>"; };
 		F1B09D6B249E0C5300701392 /* HandDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandDetector.swift; sourceTree = "<group>"; };
-		F1C20D6524CAB27C0089A3A7 /* HandTrackingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandTrackingError.swift; sourceTree = "<group>"; };
+		F1C20D6524CAB27C0089A3A7 /* HandDetectorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandDetectorError.swift; sourceTree = "<group>"; };
 		F1C20D6724CAB3780089A3A7 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		F1D6485124C6FE35006B372A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F1DDF04824BDE200001D2F4D /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 				F1B09D60249E0BA400701392 /* LaunchScreen.storyboard */,
 				F1B09D63249E0BA400701392 /* Info.plist */,
 				F1DDF04824BDE200001D2F4D /* CALayer+Extension.swift */,
-				F1C20D6524CAB27C0089A3A7 /* HandTrackingError.swift */,
+				F1C20D6524CAB27C0089A3A7 /* HandDetectorError.swift */,
 				F1C20D6724CAB3780089A3A7 /* CameraView.swift */,
 			);
 			path = HandTrackingTest;
@@ -158,7 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1B09D5A249E0BA200701392 /* ViewController.swift in Sources */,
-				F1C20D6624CAB27C0089A3A7 /* HandTrackingError.swift in Sources */,
+				F1C20D6624CAB27C0089A3A7 /* HandDetectorError.swift in Sources */,
 				F1C20D6824CAB3780089A3A7 /* CameraView.swift in Sources */,
 				F1DDF04924BDE200001D2F4D /* CALayer+Extension.swift in Sources */,
 				F1B09D6C249E0C5300701392 /* HandDetector.swift in Sources */,

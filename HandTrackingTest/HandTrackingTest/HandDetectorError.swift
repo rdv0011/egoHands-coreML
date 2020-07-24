@@ -2,16 +2,16 @@ import UIKit
 
 // MARK: - Errors
 
-enum HandTrackingError: Error {
+enum HandDetectorError: Error {
     case captureSessionSetup(reason: String)
     case visionError(error: Error)
     case otherError(error: Error)
 
     static func display(_ error: Error, inViewController viewController: UIViewController) {
-        if let appError = error as? HandTrackingError {
+        if let appError = error as? HandDetectorError {
             appError.displayInViewController(viewController)
         } else {
-            HandTrackingError.otherError(error: error).displayInViewController(viewController)
+            HandDetectorError.otherError(error: error).displayInViewController(viewController)
         }
     }
 

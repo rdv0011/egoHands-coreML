@@ -49,7 +49,7 @@ class ViewController: UIViewController {
             }
             cameraFeedSession?.startRunning()
         } catch {
-            AppError.display(error, inViewController: self)
+            HandDetectorError.display(error, inViewController: self)
         }
     }
 
@@ -97,11 +97,11 @@ extension ViewController {
     func setupAVSession() throws {
         // Select a camera device
         guard let videoDevice = AVCaptureDevice.default(cameraDeviceType, for: .video, position: cameraDevicePosition) else {
-            throw HandTrackingError.captureSessionSetup(reason: "Could not find a front facing camera.")
+            throw HandDetectorError.captureSessionSetup(reason: "Could not find a front facing camera.")
         }
 
         guard let deviceInput = try? AVCaptureDeviceInput(device: videoDevice) else {
-            throw HandTrackingError.captureSessionSetup(reason: "Could not create video device input.")
+            throw HandDetectorError.captureSessionSetup(reason: "Could not create video device input.")
         }
 
         let session = AVCaptureSession()
@@ -110,7 +110,7 @@ extension ViewController {
 
         // Add a video input.
         guard session.canAddInput(deviceInput) else {
-            throw HandTrackingError.captureSessionSetup(reason: "Could not add video device input to the session")
+            throw HandDetectorError.captureSessionSetup(reason: "Could not add video device input to the session")
         }
         session.addInput(deviceInput)
 
@@ -122,7 +122,7 @@ extension ViewController {
             dataOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
             dataOutput.setSampleBufferDelegate(self, queue: videoDataOutputQueue)
         } else {
-            throw HandTrackingError.captureSessionSetup(reason: "Could not add video data output to the session")
+            throw HandDetectorError.captureSessionSetup(reason: "Could not add video data output to the session")
         }
         session.commitConfiguration()
         cameraFeedSession = session
